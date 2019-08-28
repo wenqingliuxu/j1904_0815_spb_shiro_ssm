@@ -20,6 +20,7 @@ public class SysDrugController {
     @RequestMapping("yaoPins")
     public String yaopins(Model model){
         List<SysDrug> drugInfo = sysDrugService.findAll();
+        System.out.println(drugInfo);
         model.addAttribute("drugInfo",drugInfo);
         return "yaopins";
     }

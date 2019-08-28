@@ -1,6 +1,5 @@
 package com.qf.j1904.controller;
 
-import com.qf.j1904.pojo.SysDrug;
 import com.qf.j1904.pojo.SysUser;
 import com.qf.j1904.service.SysUserService;
 import org.apache.shiro.SecurityUtils;
@@ -70,16 +69,6 @@ public class SysUserController {
         }
         return "redirect:login";
     }
-    //    普通用户有权访问的模块
-    @RequiresPermissions(value={"user_forbidden"})
-    @RequestMapping("/yaopins")
-    public String yaopins(){
-        return "yaopins";
-    }
-    //    admin用户有权访问的模块
-/*    @RequiresPermissions(value={"user_forbidden"})
-    @RequestMapping("/role")
-    public String role(){ return "role"; }*/
 //进入登录页面
     @RequestMapping("/login")
     public String login(){
@@ -126,6 +115,7 @@ public class SysUserController {
         return "redirect:role";
     }
     //进入专家信息展示页面
+
     @RequestMapping("zhuanJias")
     public String zhuanJias(Model model){
         List<SysUser> zhuanjiaInfo=sysUserService.loadYiSheng();

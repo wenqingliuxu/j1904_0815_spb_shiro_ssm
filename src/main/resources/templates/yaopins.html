@@ -20,6 +20,10 @@
     background-color: white;
     margin-left:240px;
     }
+    .tupian{
+        width: 20px;
+        height: 20px;
+    }
     </style>
 </head>
 <body>
@@ -99,6 +103,7 @@
             <th>库存数量</th>
             <th>药品价格</th>
             <th>生产日期</th>
+            <th>药品图片</th>
 
         </tr>
         </thead>
@@ -110,6 +115,8 @@
             <td th:text="${b.drug_Quantity}"></td>
             <td th:text="${b.drug_Price}"></td>
             <td th:text="${b.drug_Date}"></td>
+            <td th:text="${b.drug_Img}"></td>
+           <!-- <img class="tupian" th:src="${b.drug_Img}"/>-->
 
         </tr>
         </tbody>
