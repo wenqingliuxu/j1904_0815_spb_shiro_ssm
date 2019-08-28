@@ -129,7 +129,6 @@ public class SysUserController {
     @RequestMapping("zhuanJias")
     public String zhuanJias(Model model){
         List<SysUser> zhuanjiaInfo=sysUserService.loadYiSheng();
-        System.out.println(zhuanjiaInfo);
         model.addAttribute("zhuanjiaInfo",zhuanjiaInfo);
         return "zhuanjias";
     }
