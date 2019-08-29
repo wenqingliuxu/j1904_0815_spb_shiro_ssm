@@ -20,4 +20,26 @@ public interface SysDrugService {
      */
     public int addDrugInfo(SysDrug sysDrug);
 
+
+    /**
+     * 根据传入的drug_Nums集合来删除药品信息
+     * @param drug_Nums
+     * @return
+     */
+    public int delDrugInfoByDrug_Nums(List<Integer> drug_Nums);
+
+
+    /**
+     * 根据num修改药品信息
+     * @param sysDrug
+     * @return int(数据库受影响的行数)
+     */
+    public int updatDrugeInfo(SysDrug sysDrug);
+
+    /**
+     * findDrugInfoByDrug_Num
+     * @param Drug_Num
+     * @return SysDrug 对象
+     */
+    public SysDrug findDrugInfoByDrug_Num(Integer Drug_Num);
 }

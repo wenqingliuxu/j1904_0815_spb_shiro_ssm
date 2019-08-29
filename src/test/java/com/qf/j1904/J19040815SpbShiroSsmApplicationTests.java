@@ -10,18 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class J19040815SpbShiroSsmApplicationTests {
-    /*@Autowired
-	SysUserMapper sysUserMapper;
-	@Test
-	public void contextLoads() {
-		SysUser test = sysUserMapper.findUserInfoByLoginName("test");
-		System.out.println(test);
-	}*/
+    @Autowired
+    SysUserMapper sysUserMapper;
+    @Test
+    public void contextLoads() {
+        SysUser test = sysUserMapper.findUserInfoByLoginName("test");
+        System.out.println(test);
+    }
 
 
     @Autowired
@@ -30,13 +32,13 @@ public class J19040815SpbShiroSsmApplicationTests {
     @Test
     public void addDrugInfo() {
 
-        String drug_Name = "a";               /*varchar(50) NULL*/
-        String drug_Features = "a";           /*varchar(100) NULL*/
-        Date drug_Date = new Date(1111 - 11 - 11);      /*        date NULL*/
-        int drug_Quantity = 11;                      /*        int(50) NULL*/
-        int drug_Price = 11;                        /*    double(7,2) NULL*/
-        String drug_AccName = "周";                       /*        varchar(50) NULL*/
-        String drug_Img = "a/a/a";                        /*        varchar(90) NULL*/
+        String drug_Name = "a";           /*    varchar(50) NULL*/
+        String drug_Features = "a";       /*    varchar(100) NULL*/
+        Date drug_Date = new Date(1111 - 11 - 11);    /*          date NULL*/
+        int drug_Quantity = 11;                       /*       int(50) NULL*/
+        int drug_Price = 11;                          /*  double(7,2) NULL*/
+        String drug_AccName = "周";                    /*           varchar(50) NULL*/
+        String drug_Img = "a/a/a";                    /*            varchar(90) NULL*/
         System.out.println("=========================new SysDrug之前=========");
         SysDrug sysDrug = new SysDrug();
 
@@ -52,5 +54,40 @@ public class J19040815SpbShiroSsmApplicationTests {
         System.out.println("====================添加成功======================"+i);
 
     }
+
+
+
+
+    @Test
+    public void delDrugInfoByDrug_Nums(){
+        List<Integer> num=new ArrayList<>();
+        num.add(6);
+        num.add(7);
+
+        System.out.println(num+"===========================================================");
+        int i = sysDrugService.delDrugInfoByDrug_Nums(num);
+        System.out.println(i);
+        System.out.println("================删除 除成功=====================================");
+    }
+    @Test
+    public void updatDrugeInfo(){
+        SysDrug drugInfoByDrug_num = sysDrugService.findDrugInfoByDrug_Num(13);
+        int i = sysDrugService.updatDrugeInfo(drugInfoByDrug_num);
+
+        System.out.println(i);
+        System.out.println("=======================修改成功=========================");
+
+    }
+
+
+    @Test
+    public void findDrugInfoByDrug_Num(){
+
+        SysDrug drugInfoByDrug_num = sysDrugService.findDrugInfoByDrug_Num(8);
+
+        System.out.println(drugInfoByDrug_num);
+        System.out.println("=======================查询成功===========================");
+    }
+
 
 }

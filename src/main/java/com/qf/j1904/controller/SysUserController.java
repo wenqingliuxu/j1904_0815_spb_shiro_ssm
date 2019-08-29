@@ -138,4 +138,5 @@ public class SysUserController {
         model.addAttribute("roleList2",roleList2);
         return "yishengs";
     }
+
 }

@@ -11,20 +11,20 @@
    展示药品的信息&ndash;&gt;-->
 <mapper namespace="com.qf.j1904.mapper.SysDrugMapper">
 
-<!--<sql id="sysDrug_colums">
-        drug_Num,
-        drug_Name,
-        drug_Features,
-        drug_Date,
-        drug_Quantity,
-        drug_Price,
-        drug_AccName
-    </sql>-->
-<select id="findAll" resultType="com.qf.j1904.pojo.SysDrug">
+    <!--<sql id="sysDrug_colums">
+            drug_Num,
+            drug_Name,
+            drug_Features,
+            drug_Date,
+            drug_Quantity,
+            drug_Price,
+            drug_AccName
+        </sql>-->
+    <select id="findAll" resultType="com.qf.j1904.pojo.SysDrug">
 select * from tb_drug
 </select>
 
-<insert id="addDrugInfo" parameterType="SysDrug">
+    <insert id="addDrugInfo" parameterType="SysDrug">
     insert into tb_drug values (
         default,
         #{drug_Name},
@@ -38,5 +38,30 @@ select * from tb_drug
 </insert>
 
 
+    <!--删除药品信息-->
+    <delete id="delDrugInfoByDrug_Nums" parameterType="integer">
+        delete from tb_drug where drug_Num in
+        <foreach collection="list" item="drug_Num"  separator="," open="(" close=")">
+            #{drug_Nums}
+        </foreach>
 
+    </delete>
+    <!--修改药品信息-->
+    <update id="updatDrugeInfo" parameterType="com.qf.j1904.pojo.SysDrug">
+        update tb_drug set  drug_Name=#{drug_Name},
+                            drug_Features=#{drug_Features},
+                            drug_Date=#{drug_Date},
+                            drug_Quantity=#{drug_Quantity},
+                            drug_Price=#{drug_Price},
+                            drug_AccName=#{drug_AccName}
+        where drug_Num=#{drug_Num}
+    </update>
+
+    <!--查药品信息-->
+    <select id="findDrugInfoByDrug_Num" resultType="com.qf.j1904.pojo.SysDrug" parameterType="integer">
+        select * from tb_drug where drug_Num=#{drug_Num}
+
+    </select>
 </mapper>
+
+

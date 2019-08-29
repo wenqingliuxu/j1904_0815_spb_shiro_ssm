@@ -15,6 +15,10 @@ public class SysDrugServiceImpl implements SysDrugService {
     @Autowired
     private SysDrugMapper sysDrugMapper;
 
+    /**
+     * 加载所有
+     * @return
+     */
     @Override
     public List<SysDrug> findAll() {
 
@@ -32,4 +36,40 @@ public class SysDrugServiceImpl implements SysDrugService {
         int i = sysDrugMapper.addDrugInfo(sysDrug);
         return i;
     }
+
+    /**
+     * 根据传入的drug_Nums集合来删除药品信息
+     * @param drug_Nums
+     * @return 受影响的行数
+     */
+    @Override
+    public int delDrugInfoByDrug_Nums(List<Integer> drug_Nums) {
+        int i = sysDrugMapper.delDrugInfoByDrug_Nums(drug_Nums);
+        return i;
+    }
+
+
+    /**
+     * 传入对象返回受影响的行数
+     * @param sysDrug
+     * @return
+     */
+    @Override
+    public int updatDrugeInfo(SysDrug sysDrug) {
+        int i = sysDrugMapper.updatDrugeInfo(sysDrug);
+        return i;
+    }
+
+    /**
+     * findDrugInfoByDrug_Num
+     * @param Drug_Num
+     * @return infoByDrugNum 对象
+     */
+    @Override
+    public SysDrug findDrugInfoByDrug_Num(Integer Drug_Num) {
+        SysDrug infoByDrugNum = sysDrugMapper.findDrugInfoByDrug_Num(Drug_Num);
+        return infoByDrugNum;
+    }
+
+
 }

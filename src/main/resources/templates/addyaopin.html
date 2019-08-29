@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="css/matrix-media.css" />
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/jquery.gritter.css" />
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="img/drug"/>
     <style>
         #side-div{
             width: 82%;
@@ -50,12 +48,7 @@
     </ul>
 </div>
 <!--close-top-Header-menu-->
-<!--start-top-serch-->
-<div id="search">
-    <input type="text" placeholder="Search here..."/>
-    <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
-</div>
-<!--close-top-serch-->
+
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul>
@@ -86,90 +79,52 @@
         </li>
     </ul>
 </div>
-
+<!--sidebar-menu-->
 <div id="side-div">
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 药品管理</h3>
-            </div>
-            <div class="panel-body">
-                <form  action="chaxunyaopin" class="form-inline" role="form" style="float:left;">
-                    <div class="form-group has-feedback">
-                        <div class="input-group">
-                            <div class="input-group-addon">查询条件</div>
-                            <input class="form-control has-success" type="text" name="sql" placeholder="请输入查询条件">
-                        </div>
-                    </div>
-                    <input type="submit" class="btn btn-warning" value="查询"/>
-                </form>
+<div class="panel-body">
+    <form  action="/addyaopinview" method="post" >
+        <!--    private int drug_Num;
+    private String drug_Name;
+    private String drug_Features;
+    private Date drug_Date;
+    private int  drug_Quantity;
+    private double drug_Price;
+    private String drug_AccName;
+    private String drug_Img;-->
 
-
-                <form action="delyaopinview" method="post">
-                    <button type="submit" class="btn btn-danger" style="float:right;margin-left:10px;" ><i class=" glyphicon glyphicon-remove"></i> 删除</button>
-
-                    <button type="button" class="btn btn-primary" style="float:right;" onclick="window.location.href='addyaopin'"><i class="glyphicon glyphicon-plus"></i> 新增</button>
-                    <br>
-                    <hr style="clear:both;">
-                    <div class="table-responsive">
-                        <table class="table  table-bordered">
-                            <thead>
-                            <tr >
-                                <th width="30">#</th>
-                                <th width="30"><input type="checkbox" id="all"></th>
-                                <th>药品编号</th>
-                                <th>药品名字</th>
-                                <th>药品详情</th>
-                                <th>库存数量</th>
-                                <th>药品价格</th>
-                                <th>生产日期</th>
-
-                                <th width="100">操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="b:${drugInfo}">
-                                <td th:text="${b.drug_Num}"></td>
-                                <td><input type="checkbox" name="ids" th:value="${b.drug_Num}"></td>
-                                <td th:text="${b.drug_Num}"></td>
-                                <td th:text="${b.drug_Name}"></td>
-                                <td th:text="${b.drug_Features}"></td>
-                                <td th:text="${b.drug_Quantity}"></td>
-                                <td th:text="${b.drug_Price}"></td>
-                                <td th:text="${b.drug_Date}"></td>
-                                <td>
-
-                                    <a th:href="@{loadById(userId=${b.drug_Num})}"  class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i>修改</a>
-                                    <a th:href="@{shanChu(drug_Nums=${b.drug_Num})}" class="btn btn-danger btn-xs"><i class=" glyphicon glyphicon-remove"></i>删除</a>
-                                </td>
-                            </tr>
-                            </tbody>
-
-                            <tfoot>
-                            <tr >
-                                <td colspan="6" align="center">
-                                    <ul class="pagination">
-                                       <!-- <a class="btn btn-default" href="loadAll?page=1">首页</a>
-                                        <a class="btn btn-default" th:href="@{loadAll(page=${currentPage-1})}">上一页</a>
-                                        <a class="btn btn-default" th:href="@{loadAll(page=${currentPage+1})}">下一页</a>
-                                        <a class="btn btn-default" th:href="@{loadAll(page=${maxPage})}">末页</a>-->
-                                    </ul>
-                                </td>
-                            </tr>
-
-                            </tfoot>
-                        </table>
-                    </div>
-                </form>
-
-            </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">药品名称</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="drug_Name" placeholder="请输药品名称">
         </div>
-    </div>
-
+        <div class="form-group">
+            <label for="exampleInputPassword1">药品作用</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="drug_Features" placeholder="请输入药品作用">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">入库日期</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="drug_Date" placeholder="请输入入库日期">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">库存</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="drug_Quantity" placeholder="请输入库存">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">价格</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="drug_Price" placeholder="请输入价格">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">管理员</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="drug_AccName" placeholder="请输入管理员">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">图片</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="drug_Img" placeholder="请输入图片地址">
+        </div>
+        <input type="submit" class="btn btn-success" value="提交"/>
+        <input type="reset" class="btn btn-danger" value="重置"/>
+    </form>
 </div>
-
-
-
+</div>
 <script src="js/excanvas.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.ui.custom.js"></script>
@@ -215,17 +170,6 @@
     function resetMenu() {
         document.gomenu.selector.selectedIndex = 2;
     }
-
 </script>
-    <script type="text/javascript">
-        $(function(){
-            $("#all").click(function(){
-                var bool=this.checked;
-                $("input[name='drug_Nums']").each(function(){
-                    this.checked=bool;
-                });
-            });
-        });
-    </script>
 </body>
 </html>
