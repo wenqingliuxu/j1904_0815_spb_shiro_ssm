@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Doctor Admin</title>
+    <title>guahao </title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -14,28 +14,24 @@
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="img/drug"/>
     <style>
-    #side-div{
-    width: 82%;
-    height: 700px;
-    background-color: white;
-    margin-left:240px;
-    border: #0e0e0e;
-    }
-        #small-div{
-            width: 180px;
-            height: 280px;
-            float: left;
-            margin-left: 40px;
-
+        #side-div{
+            width: 82%;
+            height: 700px;
+            background-color: white;
+            margin-left:240px;
         }
-        #pic-div{
-            width: 178px;
-            height: 200px;
+        .tupian{
+            width: 20px;
+            height: 20px;
+        }
+        #form-div{
+            margin-left: 400px;
         }
     </style>
 </head>
 <body>
 
+<!--Header-part-->
 <div id="header">
     <h1><a href="dashboard">Doctor Admin</a></h1>
 </div>
@@ -66,7 +62,8 @@
     <input type="text" placeholder="Search here..."/>
     <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 </div>
-
+<!--close-top-serch-->
+<!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul>
         <li class="active"><a href="Main"><i class="icon icon-home"></i> <span>系统面板</span></a> </li>
@@ -100,38 +97,26 @@
 
 <div id="side-div">
     <br/>
-    <h4>药品展示页面</h4>
-    <!--<table class="table table-bordered">
-        <thead>
-        <tr >
-            <th>药品编号</th>
-            <th>药品名字</th>
-            <th>药品详情</th>
-            <th>库存数量</th>
-            <th>药品价格</th>
-            <th>生产日期</th>
-            <th>药品图片</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="b:${drugInfo}">
-            <td th:text="${b.drug_Num}"></td>
-            <td th:text="${b.drug_Name}"></td>
-            <td th:text="${b.drug_Features}"></td>
-            <td th:text="${b.drug_Quantity}"></td>
-            <td th:text="${b.drug_Price}"></td>
-            <td th:text="${b.drug_Date}"></td>
-            <td th:text="${b.drug_Img}"></td>
-           &lt;!&ndash; <img class="tupian" th:src="${b.drug_Img}"/>&ndash;&gt;
-
-        </tr>
-        </tbody>
-    </table>-->
-    <div id="small-div" th:each="b:${drugInfo}">
-        <img id="pic-div" th:src="${b.drug_Img}"/>
-        <h6 th:text="${b.drug_Name}"></h6>
-        <h6 th:text="${b.drug_Features}"></h6>
-        <h6 th:text="${b.drug_Price}"></h6>
+    <h4>个人信息</h4>
+    <div id="form-div">
+    <div class="panel-body">
+        <!--<form role="form" action="tiJiaoGuaHao(loginName={user.loginName})">-->
+        <label for="disabledTextInput">用户编号</label>
+        <input id="disabledTextInput" class="form-control" type="text" name="userid" th:value="${user.userId}" readonly>
+        <label for="disabledTextInput1">用户姓名</label>
+        <input id="disabledTextInput1" class="form-control" type="text" name="loginName" th:value="${user.loginName}" readonly>
+        <label for="disabledTextInput2">用户状态</label>
+        <input id="disabledTextInput2" class="form-control" type="text" name="state" th:value="${user.state}" readonly>
+        <label for="disabledTextInput3">注册时间</label>
+        <input id="disabledTextInput3" class="form-control" type="text" th:value="${user.createTime}" readonly>
+        <label for="disabledTextInput5">用户权限</label>
+        <input id="disabledTextInput5" class="form-control" type="text" th:value="${user.realname}" readonly>
+        <label for="disabledTextInput4">主治医生</label>
+        <input id="disabledTextInput4" class="form-control" type="text" name="state" th:value="${user.doctorName}" readonly>
+        <br/>
+        <a href="queRen" class="btn btn-success" id="successGuaHao"><i class="glyphicon glyphicon-edit"></i> 确认</a>
+        <!--</form>-->
+    </div>
     </div>
 </div>
 
@@ -139,51 +124,52 @@
 
 
 
-    <script src="js/excanvas.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.ui.custom.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.flot.min.js"></script>
-    <script src="js/jquery.flot.resize.min.js"></script>
-    <script src="js/jquery.peity.min.js"></script>
-    <script src="js/fullcalendar.min.js"></script>
-    <script src="js/matrix.js"></script>
-    <script src="js/matrix.dashboard.js"></script>
-    <script src="js/jquery.gritter.min.js"></script>
-    <script src="js/matrix.interface.js"></script>
-    <script src="js/matrix.chat.js"></script>
-    <script src="js/jquery.validate.js"></script>
-    <script src="js/matrix.form_validation.js"></script>
-    <script src="js/jquery.wizard.js"></script>
-    <script src="js/jquery.uniform.js"></script>
-    <script src="js/select2.min.js"></script>
-    <script src="js/matrix.popover.js"></script>
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/matrix.tables.js"></script>
+<script src="js/excanvas.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.ui.custom.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.flot.min.js"></script>
+<script src="js/jquery.flot.resize.min.js"></script>
+<script src="js/jquery.peity.min.js"></script>
+<script src="js/fullcalendar.min.js"></script>
+<script src="js/matrix.js"></script>
+<script src="js/matrix.dashboard.js"></script>
+<script src="js/jquery.gritter.min.js"></script>
+<script src="js/matrix.interface.js"></script>
+<script src="js/matrix.chat.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/matrix.form_validation.js"></script>
+<script src="js/jquery.wizard.js"></script>
+<script src="js/jquery.uniform.js"></script>
+<script src="js/select2.min.js"></script>
+<script src="js/matrix.popover.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/matrix.tables.js"></script>
 
-    <script type="text/javascript">
-        // This function is called from the pop-up menus to transfer to
-        // a different page. Ignore if the value returned is a null string:
-        function goPage (newURL) {
+<script type="text/javascript">
+    // This function is called from the pop-up menus to transfer to
+    // a different page. Ignore if the value returned is a null string:
+    function goPage (newURL) {
 
-            // if url is empty, skip the menu dividers and reset the menu selection to default
-            if (newURL != "") {
+        // if url is empty, skip the menu dividers and reset the menu selection to default
+        if (newURL != "") {
 
-                // if url is "-", it is this page -- reset the menu:
-                if (newURL == "-" ) {
-                    resetMenu();
-                }
-                // else, send page to designated URL
-                else {
-                    document.location.href = newURL;
-                }
+            // if url is "-", it is this page -- reset the menu:
+            if (newURL == "-" ) {
+                resetMenu();
+            }
+            // else, send page to designated URL
+            else {
+                document.location.href = newURL;
             }
         }
+    }
 
-        // resets the menu selection upon entry to this page:
-        function resetMenu() {
-            document.gomenu.selector.selectedIndex = 2;
-        }
-    </script>
+    // resets the menu selection upon entry to this page:
+    function resetMenu() {
+        document.gomenu.selector.selectedIndex = 2;
+    }
+
+</script>
 </body>
 </html>

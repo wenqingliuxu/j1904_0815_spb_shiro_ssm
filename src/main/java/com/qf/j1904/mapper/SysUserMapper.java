@@ -75,4 +75,15 @@ public interface SysUserMapper {
      * @return
      */
     public int updateRole(String loginName);
+
+    /**
+     * 通过用户id查询用户信息
+     * @param userId
+     * @return
+     */
+    public SysUser loadUserById(int userId);
+
+    public int tiJiaoGH(String lgName,@Param("loginName") String loginName);
+
+    public SysUser loadUserByLoginName(String loginName);
 }

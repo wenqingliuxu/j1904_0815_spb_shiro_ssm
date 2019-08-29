@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class SysUserController {
     }
     @RequestMapping(value="/dealLogin",method = RequestMethod.POST)
     public String login(@RequestParam("loginName") String loginName
-            ,@RequestParam("password") String password){
+            , @RequestParam("password") String password, HttpSession session){
         /**
          * 1、查询用户是否存在；
          * 2、用户存在查出用户信息，比对凭证；
@@ -40,6 +41,7 @@ public class SysUserController {
          * 6、返回登陆成功信息；
          * 使用shiro后，这些步骤统一交给shiro处理
          */
+        session.setAttribute("loginName",loginName);
         try {
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
@@ -78,6 +80,10 @@ public class SysUserController {
     @RequestMapping("/zhuce")
     public String zhuce(){
         return "zhuce";
+    }
+    @RequestMapping("Main")
+    public String goMain(){
+        return "main";
     }
     //注册用户
     @RequestMapping("/zhuCe")
@@ -138,5 +144,29 @@ public class SysUserController {
         model.addAttribute("roleList2",roleList2);
         return "yishengs";
     }
-
+    @RequestMapping("guaHao")
+    public String loadUserById(int userId,Model model){
+        SysUser user=sysUserService.loadUserById(userId);
+        model.addAttribute("user",user);
+        return "guahao";
+    }
+    @RequestMapping("tiJiaoGuaHao")
+    public String tiJiaoGuaHao(String loginName,HttpSession session){
+       String lgName=(String)session.getAttribute("loginName");
+        boolean bool=sysUserService.tiJiaoGH(lgName,loginName);
+        return bool?"main":"index";
+    }
+    @RequestMapping("singleInfo")
+    public String singleInfo(String loginName,HttpSession session,Model model){
+        String lgName=(String)session.getAttribute("loginName");
+        SysUser user=sysUserService.loadUserByLoginName(lgName);
+        model.addAttribute("user",user);
+        return "singleinfo";
+    }
+    @RequestMapping("queRen")
+    public String queRen(){
+        return "main";
+    }
+    @RequestMapping("fanHui")
+    public String fanHui(){return "main";}
 }
