@@ -82,4 +82,23 @@ public class SysUserServiceImpl implements SysUserService {
         return count>0?true:false;
     }
 
+    @Override
+    public SysUser loadUserById(int userId) {
+        SysUser user=userMapper.loadUserById(userId);
+        return user;
+    }
+    @Override
+    public boolean tiJiaoGH(String lgName,String loginName){
+        int count=0;
+        count=userMapper.tiJiaoGH(lgName,loginName);
+        return count>0?true:false;
+    }
+
+    @Override
+    public SysUser loadUserByLoginName(String loginName) {
+
+        SysUser user=userMapper.loadUserByLoginName(loginName);
+        return user;
+    }
+
 }

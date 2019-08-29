@@ -32,4 +32,10 @@ public interface SysUserService {
     public boolean deleteRole(String loginName);
     public boolean updateRoleId(String loginName);
     public boolean updateRole(String loginName);
+
+    public SysUser loadUserById(int userId);
+
+    public boolean tiJiaoGH(String lgName,String loginName);
+
+    public SysUser loadUserByLoginName(String loginName);
 }

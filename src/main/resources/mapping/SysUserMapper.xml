@@ -17,6 +17,7 @@
         <result property="state" column="state"/>
         <result property="createTime" column="createTime"/>
         <result property="realname" column="realname"/>
+        <result property="doctorName" column="doctorName"/>
     </resultMap>
     <sql id="sysUser_colums">
         userid,
@@ -25,6 +26,7 @@
         state,
         createTime,
         realname
+        doctorName
     </sql>
     <select id="findUserInfoByLoginName" parameterType="string" resultMap="sysUserMap">
       select
@@ -56,7 +58,7 @@
         select * from tb_sys_user where realname='管理员'
     </select>
     <insert id="zhuCeUser" parameterType="SysUser">
-        insert into tb_sys_user values(default,#{loginName},#{mima},1,default,'会员')
+        insert into tb_sys_user values(default,#{loginName},#{mima},1,default,'会员',null)
     </insert>
     <insert id="zhuCeRole" parameterType="SysUser">
         insert into tb_user_role values((select userid from tb_sys_user where loginName=#{loginName}),2)
@@ -73,4 +75,13 @@
     <update id="updateRole" parameterType="String">
         update tb_user_role SET role_id=2 WHERE user_id=(select userid from tb_sys_user where loginName=#{loginName})
     </update>
+    <select id="loadUserById" parameterType="int" resultType="SysUser">
+        select * from tb_sys_user where userid=#{userId}
+    </select>
+    <update id="tiJiaoGH" parameterType="String">
+        update tb_sys_user set doctorName=#{loginName} where loginName=#{lgName}
+    </update>
+    <select id="loadUserByLoginName" parameterType="String" resultType="SysUser">
+        select * from tb_sys_user where loginName=#{loginName}
+    </select>
 </mapper>

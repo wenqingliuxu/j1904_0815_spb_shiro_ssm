@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Doctor Admin</title>
+    <title>guahao </title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -19,6 +19,13 @@
             height: 700px;
             background-color: white;
             margin-left:240px;
+        }
+        .tupian{
+            width: 20px;
+            height: 20px;
+        }
+        #form-div{
+            margin-left: 400px;
         }
     </style>
 </head>
@@ -89,85 +96,29 @@
 </div>
 
 <div id="side-div">
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><i class="glyphicon glyphicon-th"></i> 药品管理</h3>
-            </div>
-            <div class="panel-body">
-                <form  action="chaxunyaopin" class="form-inline" role="form" style="float:left;">
-                    <div class="form-group has-feedback">
-                        <div class="input-group">
-                            <div class="input-group-addon">查询条件</div>
-                            <input class="form-control has-success" type="text" name="sql" placeholder="请输入查询条件">
-                        </div>
-                    </div>
-                    <input type="submit" class="btn btn-warning" value="查询"/>
-                </form>
-
-
-                <form action="plshanchu" method="post">
-                    <button type="submit" class="btn btn-danger" style="float:right;margin-left:10px;" ><i class=" glyphicon glyphicon-remove"></i> 删除</button>
-
-                    <button type="button" class="btn btn-primary" style="float:right;" onclick="window.location.href='addyaopin'"><i class="glyphicon glyphicon-plus"></i> 新增</button>
-                    <br>
-                    <hr style="clear:both;">
-                    <div class="table-responsive">
-                        <table class="table  table-bordered">
-                            <thead>
-                            <tr >
-                                <th width="30">#</th>
-                                <th width="30"><input type="checkbox" id="all"></th>
-                                <th>药品编号</th>
-                                <th>药品名字</th>
-                                <th>药品详情</th>
-                                <th>库存数量</th>
-                                <th>药品价格</th>
-                                <th>生产日期</th>
-
-                                <th width="100">操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="b:${drugInfo}">
-                                <td th:text="${b.drug_Num}"></td>
-                                <td><input type="checkbox" name="ids" th:value="${b.drug_Num}"></td>
-                                <td th:text="${b.drug_Num}"></td>
-                                <td th:text="${b.drug_Name}"></td>
-                                <td th:text="${b.drug_Features}"></td>
-                                <td th:text="${b.drug_Quantity}"></td>
-                                <td th:text="${b.drug_Price}"></td>
-                                <td th:text="${b.drug_Date}"></td>
-                                <td>
-                                    <a th:href="@{assignRole(userId=${b.drug_Num})}"  class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></a>
-                                    <a th:href="@{loadById(userId=${b.drug_Num})}"  class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i></a>
-                                    <a th:href="@{delete(userId=${b.drug_Num})}" class="btn btn-danger btn-xs"><i class=" glyphicon glyphicon-remove"></i></a>
-                                </td>
-                            </tr>
-                            </tbody>
-
-                            <tfoot>
-                            <tr >
-                                <td colspan="6" align="center">
-                                    <ul class="pagination">
-                                       <!-- <a class="btn btn-default" href="loadAll?page=1">首页</a>
-                                        <a class="btn btn-default" th:href="@{loadAll(page=${currentPage-1})}">上一页</a>
-                                        <a class="btn btn-default" th:href="@{loadAll(page=${currentPage+1})}">下一页</a>
-                                        <a class="btn btn-default" th:href="@{loadAll(page=${maxPage})}">末页</a>-->
-                                    </ul>
-                                </td>
-                            </tr>
-
-                            </tfoot>
-                        </table>
-                    </div>
-                </form>
-
-            </div>
-        </div>
+    <br/>
+    <h4>个人信息</h4>
+    <div id="form-div">
+    <div class="panel-body">
+        <!--<form role="form" action="tiJiaoGuaHao(loginName={user.loginName})">-->
+        <label for="disabledTextInput">用户编号</label>
+        <input id="disabledTextInput" class="form-control" type="text" name="userid" th:value="${user.userId}" readonly>
+        <label for="disabledTextInput1">用户姓名</label>
+        <input id="disabledTextInput1" class="form-control" type="text" name="loginName" th:value="${user.loginName}" readonly>
+        <label for="disabledTextInput2">用户状态</label>
+        <input id="disabledTextInput2" class="form-control" type="text" name="state" th:value="${user.state}" readonly>
+        <label for="disabledTextInput3">注册时间</label>
+        <input id="disabledTextInput3" class="form-control" type="text" placeholder="8:00--20:00" readonly>
+        <label for="disabledTextInput4">主治医生</label>
+        <input id="disabledTextInput4" class="form-control" type="text" name="state" th:value="${user.doctorName}" readonly>
+        <br/>
+        <a th:href="main" class="btn btn-success" id="successGuaHao"><i class="glyphicon glyphicon-edit"></i> 确认</a>
+        <!--</form>-->
     </div>
-
+    </div>
 </div>
+
+
 
 
 
@@ -218,15 +169,5 @@
     }
 
 </script>
-    <script type="text/javascript">
-        $(function(){
-            $("#all").click(function(){
-                var bool=this.checked;
-                $("input[name='ids']").each(function(){
-                    this.checked=bool;
-                });
-            });
-        });
-    </script>
 </body>
 </html>

@@ -17,6 +17,7 @@ public class SysUser implements Serializable{
     private int state;//状态：1表示 用户有效；0表示被禁用户
     private Date createTime;//创建时间
     private String realname;//真实姓名
+    private String doctorName;//主治医生姓名
 
     public long getUserId() {
         return userId;
@@ -64,5 +65,13 @@ public class SysUser implements Serializable{
 
     public void setRealname(String realname) {
         this.realname = realname;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 }

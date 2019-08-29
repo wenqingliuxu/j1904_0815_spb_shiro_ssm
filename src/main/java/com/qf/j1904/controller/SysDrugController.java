@@ -31,9 +31,5 @@ public class SysDrugController {
         model.addAttribute("drugInfo",drugInfo);
         return "yaopinguanli";
     }
-    //挂号
-    @RequestMapping("/guahao")
-    public String guahao(int userId){
-        return "guahao";
-    }
+
 }
