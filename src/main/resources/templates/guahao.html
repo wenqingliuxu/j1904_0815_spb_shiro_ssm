@@ -1,44 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Doctor Admin</title>
+    <title>guahao </title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="css/fullcalendar.css" />
     <link rel="stylesheet" href="css/matrix-style.css" />
     <link rel="stylesheet" href="css/matrix-media.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/doc.main.css" />
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/jquery.gritter.css" />
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="img/drug"/>
     <style>
         #side-div{
-            width: 80%;
+            width: 82%;
             height: 700px;
+            background-color: white;
             margin-left:240px;
-            background-color: ghostwhite;
         }
-        .tree li {
-            list-style-type: none;
-            cursor:pointer;
-        }
-        #form-group1{
-            margin-left: 40px;
-            float: left;
-        }
-        #form-group2{
-            float: left;
-            margin-top: 40px;
-        }
-        #form-group3{
-            float: left;
-            margin-left: 40px;
+        .tupian{
+            width: 20px;
+            height: 20px;
         }
     </style>
 </head>
@@ -70,7 +54,12 @@
     </ul>
 </div>
 <!--close-top-Header-menu-->
-
+<!--start-top-serch-->
+<div id="search">
+    <input type="text" placeholder="Search here..."/>
+    <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch-->
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul>
@@ -101,32 +90,30 @@
         </li>
     </ul>
 </div>
+
 <div id="side-div">
     <br/>
-    <h4>角色分配</h4>
-            <form role="form" class="form-inline">
-
-                <div id="form-group1">
-                    <label >普通用户</label><br>
-                    <select id="wfp" class="form-control" multiple size="10" style="width:160px;overflow-y:auto;" >
-                        <option  th:each="b:${roleList1}" th:text="${b.loginName}" ></option>
-                    </select>
-                </div>
-                <div id="form-group2">
-                    <ul>
-                        <li id="weifenpei" class="btn btn-default glyphicon glyphicon-chevron-right">右移</li>
-                        <br>
-                        <li id="yifenpei" class="btn btn-default glyphicon glyphicon-chevron-left" style="margin-top:20px;">左移</li>
-                    </ul>
-                </div>
-                <div id="form-group3">
-                    <label >医院医生</label><br>
-                    <select id="yfp" class="form-control" multiple size="10" style="width:160px;overflow-y:auto;"  >
-                        <option th:each="b:${roleList2}" th:text="${b.loginName}" ></option>
-                    </select>
-                </div>
-            </form>
+    <h4>挂号信息</h4>
+    <div class="panel-body">
+    <form role="form" action="updateUser">
+        <label for="disabledTextInput">专家编号</label>
+        <input id="disabledTextInput" class="form-control" type="text" placeholder="Readonly input here…" readonly>
+        <label for="disabledTextInput1">专家姓名</label>
+        <input id="disabledTextInput1" class="form-control" type="text" placeholder="Readonly input here…" readonly>
+        <label for="disabledTextInput2">专家状态</label>
+        <input id="disabledTextInput2" class="form-control" type="text" placeholder="Readonly input here…" readonly>
+        <label for="disabledTextInput3">工作时间</label>
+        <input id="disabledTextInput3" class="form-control" type="text" placeholder="Readonly input here…" readonly>
+        <br/>
+        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> 挂号</button>
+    </form>
+    </div>
 </div>
+
+
+
+
+
 <script src="js/excanvas.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.ui.custom.js"></script>
@@ -148,9 +135,6 @@
 <script src="js/matrix.popover.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/matrix.tables.js"></script>
-<script src="js/jquery-2.1.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/docs.min.js"></script>
 
 <script type="text/javascript">
     // This function is called from the pop-up menus to transfer to
@@ -175,27 +159,6 @@
     function resetMenu() {
         document.gomenu.selector.selectedIndex = 2;
     }
-
-    $(function () {
-        $(".list-group-item").click(function(){
-            if ( $(this).find("ul") ) {
-                $(this).toggleClass("tree-closed");
-                if ( $(this).hasClass("tree-closed") ) {
-                    $("ul", this).hide("fast");
-                } else {
-                    $("ul", this).show("fast");
-                }
-            }
-        });
-        $("#weifenpei").click(function(){
-            var c=$("#wfp").val();
-            location.href="jiaRole?loginName="+c;
-        });
-        $("#yifenpei").click(function(){
-            var c=$("#yfp").val();
-            location.href="jianRole?loginName="+c;
-        });
-    });
 </script>
 </body>
 </html>

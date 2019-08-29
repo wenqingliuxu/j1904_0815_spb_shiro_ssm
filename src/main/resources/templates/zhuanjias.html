@@ -90,6 +90,7 @@
             <th>专家姓名</th>
             <th>专家状态</th>
             <th>创建时间</th>
+            <th>预约挂号</th>
         </tr>
         </thead>
         <tbody>
@@ -98,6 +99,9 @@
             <td th:text="${b.loginName}"></td>
             <td th:text="${b.state}"></td>
             <td th:text="${b.createTime}"></td>
+            <td>
+                <a th:href="@{guahao(userId=${b.userId})}"  class="btn btn-success btn-xs">挂号<i class=" glyphicon glyphicon-check"></i></a>
+            </td>
 
         </tr>
         </tbody>

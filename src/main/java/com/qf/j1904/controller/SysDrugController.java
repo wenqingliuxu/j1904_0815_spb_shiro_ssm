@@ -20,7 +20,6 @@ public class SysDrugController {
     @RequestMapping("yaoPins")
     public String yaopins(Model model){
         List<SysDrug> drugInfo = sysDrugService.findAll();
-        System.out.println(drugInfo);
         model.addAttribute("drugInfo",drugInfo);
         return "yaopins";
     }
@@ -32,5 +31,9 @@ public class SysDrugController {
         model.addAttribute("drugInfo",drugInfo);
         return "yaopinguanli";
     }
-
+    //挂号
+    @RequestMapping("/guahao")
+    public String guahao(int userId){
+        return "guahao";
+    }
 }
