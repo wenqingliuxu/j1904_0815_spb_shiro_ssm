@@ -167,4 +167,6 @@ public class SysUserController {
     public String queRen(){
         return "main";
     }
+    @RequestMapping("fanHui")
+    public String fanHui(){return "main";}
 }
