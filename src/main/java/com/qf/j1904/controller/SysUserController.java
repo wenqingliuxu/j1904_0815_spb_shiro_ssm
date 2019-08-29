@@ -81,6 +81,10 @@ public class SysUserController {
     public String zhuce(){
         return "zhuce";
     }
+    @RequestMapping("Main")
+    public String goMain(){
+        return "main";
+    }
     //注册用户
     @RequestMapping("/zhuCe")
     public String zhucey(String loginName,String password){
@@ -158,5 +162,9 @@ public class SysUserController {
         SysUser user=sysUserService.loadUserByLoginName(lgName);
         model.addAttribute("user",user);
         return "singleinfo";
+    }
+    @RequestMapping("queRen")
+    public String queRen(){
+        return "main";
     }
 }
