@@ -70,7 +70,7 @@
         <li> <a href="yaoPins"><i class="icon icon-signal"></i> <span>药品信息</span></a> </li>
         <li> <a href="zhuanJias"><i class="icon icon-inbox"></i> <span>专家信息</span></a> </li>
         <li class="zhuyuan"> <a href="singleInfo"><i class="icon icon-file"></i> <span>个人信息</span> </a>
-        <li><a href="yonghus"><i class="icon icon-th"></i> <span>用户信息管理</span></a></li>
+        <li><a href="yonghus"><i class="icon icon-th"></i> <span>患者信息管理</span></a></li>
         <li><a href="yishengs"><i class="icon icon-fullscreen"></i> <span>医护人员管理</span></a></li>
         <li class="role"> <a href="role"><i class="icon icon-th-list"></i> <span>角色权限管理</span> </a>
 
@@ -109,6 +109,8 @@
         <input id="disabledTextInput2" class="form-control" type="text" name="state" th:value="${user.state}" readonly>
         <label for="disabledTextInput3">注册时间</label>
         <input id="disabledTextInput3" class="form-control" type="text" th:value="${user.createTime}" readonly>
+        <label for="disabledTextInput5">用户权限</label>
+        <input id="disabledTextInput5" class="form-control" type="text" th:value="${user.realname}" readonly>
         <label for="disabledTextInput4">主治医生</label>
         <input id="disabledTextInput4" class="form-control" type="text" name="state" th:value="${user.doctorName}" readonly>
         <br/>
