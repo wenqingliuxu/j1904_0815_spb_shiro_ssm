@@ -66,8 +66,8 @@ public class SysDrugServiceImpl implements SysDrugService {
      * @return infoByDrugNum 对象
      */
     @Override
-    public SysDrug findDrugInfoByDrug_Num(Integer Drug_Num) {
-        SysDrug infoByDrugNum = sysDrugMapper.findDrugInfoByDrug_Num(Drug_Num);
+    public SysDrug findDrugInfoByDrug_Num(int drug_Num) {
+        SysDrug infoByDrugNum = sysDrugMapper.findDrugInfoByDrug_Num(drug_Num);
         return infoByDrugNum;
     }
 

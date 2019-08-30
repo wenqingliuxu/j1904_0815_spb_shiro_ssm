@@ -31,7 +31,7 @@ public interface SysDrugMapper {
      * @param drug_Nums
      * @return （int）受影响的行数
      */
-    public int delDrugInfoByDrug_Nums(@Param("drug_Nums") List<Integer> drug_Nums);
+    public int delDrugInfoByDrug_Nums(List<Integer> drug_Nums);
 
     /**
      * 根据num修改药品信息
@@ -45,6 +45,8 @@ public interface SysDrugMapper {
      * @param Drug_Num
      * @return SysDrug对象
      */
-    public SysDrug findDrugInfoByDrug_Num(Integer Drug_Num);
+    public SysDrug findDrugInfoByDrug_Num(int drug_Num);
+
+
 
 }

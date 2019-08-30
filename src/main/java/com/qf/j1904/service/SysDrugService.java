@@ -38,8 +38,8 @@ public interface SysDrugService {
 
     /**
      * findDrugInfoByDrug_Num
-     * @param Drug_Num
+     * @param drug_Num
      * @return SysDrug 对象
      */
-    public SysDrug findDrugInfoByDrug_Num(Integer Drug_Num);
+    public SysDrug findDrugInfoByDrug_Num(int drug_Num);
 }

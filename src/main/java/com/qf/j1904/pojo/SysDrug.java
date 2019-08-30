@@ -1,6 +1,7 @@
 package com.qf.j1904.pojo;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -21,6 +22,7 @@ import java.util.Date;
  */
 
 @Data
+
 public class SysDrug implements Serializable {
     private int drug_Num;
     private String drug_Name;

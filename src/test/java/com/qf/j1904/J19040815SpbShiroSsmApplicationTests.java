@@ -19,6 +19,7 @@ import java.util.List;
 public class J19040815SpbShiroSsmApplicationTests {
     @Autowired
     SysUserMapper sysUserMapper;
+
     @Test
     public void contextLoads() {
         SysUser test = sysUserMapper.findUserInfoByLoginName("test");
@@ -51,27 +52,26 @@ public class J19040815SpbShiroSsmApplicationTests {
         sysDrug.setDrug_Img(drug_Img);
 
         int i = sysDrugService.addDrugInfo(sysDrug);
-        System.out.println("====================添加成功======================"+i);
+        System.out.println("====================添加成功======================" + i);
 
     }
 
 
-
-
     @Test
-    public void delDrugInfoByDrug_Nums(){
-        List<Integer> num=new ArrayList<>();
+    public void delDrugInfoByDrug_Nums() {
+        List<Integer> num = new ArrayList<>();
         num.add(6);
         num.add(7);
 
-        System.out.println(num+"===========================================================");
+        System.out.println(num + "===========================================================");
         int i = sysDrugService.delDrugInfoByDrug_Nums(num);
         System.out.println(i);
         System.out.println("================删除 除成功=====================================");
     }
+
     @Test
-    public void updatDrugeInfo(){
-        SysDrug drugInfoByDrug_num = sysDrugService.findDrugInfoByDrug_Num(13);
+    public void updatDrugeInfo() {
+        SysDrug drugInfoByDrug_num = sysDrugService.findDrugInfoByDrug_Num(22);
         int i = sysDrugService.updatDrugeInfo(drugInfoByDrug_num);
 
         System.out.println(i);
@@ -81,7 +81,7 @@ public class J19040815SpbShiroSsmApplicationTests {
 
 
     @Test
-    public void findDrugInfoByDrug_Num(){
+    public void findDrugInfoByDrug_Num() {
 
         SysDrug drugInfoByDrug_num = sysDrugService.findDrugInfoByDrug_Num(8);
 

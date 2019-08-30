@@ -140,7 +140,7 @@
                                 <td th:text="${b.drug_Date}"></td>
                                 <td>
 
-                                    <a th:href="@{loadById(userId=${b.drug_Num})}"  class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i>修改</a>
+                                    <a th:href="@{updateDrug_InfoByDrug_Num(drug_Num=${b.drug_Num})}"  class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i>修改</a>
                                     <a th:href="@{shanChu(drug_Nums=${b.drug_Num})}" class="btn btn-danger btn-xs"><i class=" glyphicon glyphicon-remove"></i>删除</a>
                                 </td>
                             </tr>

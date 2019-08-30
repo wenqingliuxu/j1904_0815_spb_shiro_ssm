@@ -41,7 +41,7 @@ select * from tb_drug
     <!--删除药品信息-->
     <delete id="delDrugInfoByDrug_Nums" parameterType="integer">
         delete from tb_drug where drug_Num in
-        <foreach collection="list" item="drug_Num"  separator="," open="(" close=")">
+        <foreach collection="list" item="drug_Nums"  separator="," open="(" close=")">
             #{drug_Nums}
         </foreach>
 
