@@ -62,7 +62,7 @@ public class SysDrugServiceImpl implements SysDrugService {
 
     /**
      * findDrugInfoByDrug_Num
-     * @param Drug_Num
+     * @param drug_Num
      * @return infoByDrugNum 对象
      */
     @Override
@@ -70,6 +70,7 @@ public class SysDrugServiceImpl implements SysDrugService {
         SysDrug infoByDrugNum = sysDrugMapper.findDrugInfoByDrug_Num(drug_Num);
         return infoByDrugNum;
     }
+
 
 
 }

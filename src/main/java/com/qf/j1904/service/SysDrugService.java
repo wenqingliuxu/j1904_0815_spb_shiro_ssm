@@ -42,4 +42,5 @@ public interface SysDrugService {
      * @return SysDrug 对象
      */
     public SysDrug findDrugInfoByDrug_Num(int drug_Num);
+
 }

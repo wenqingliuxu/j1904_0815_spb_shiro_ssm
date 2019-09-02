@@ -42,11 +42,10 @@ public interface SysDrugMapper {
 
     /**
      *findDrugInfoByDrug_Num
-     * @param Drug_Num
+     * @param drug_Num
      * @return SysDrug对象
      */
     public SysDrug findDrugInfoByDrug_Num(int drug_Num);
-
 
 
 }
